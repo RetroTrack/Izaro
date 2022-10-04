@@ -1,0 +1,3 @@
+command /music <string>:
+  trigger:
+    send "&cNOT IMPLEMENTED"

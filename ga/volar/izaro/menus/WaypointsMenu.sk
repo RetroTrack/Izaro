@@ -1,0 +1,2 @@
+function WaypointsMenu():
+  set {Guis::Waypoints} to a new chest inventory with 6 row with name "&f七七七七七七七七ㇺ"

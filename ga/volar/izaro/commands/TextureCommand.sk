@@ -1,0 +1,8 @@
+command /texture [<player>]:
+  trigger:
+    if arg-1 is set:
+      send resource pack from "https://www.dropbox.com/s/qm9l89jn65dg9qa/Wynncraft1.zip?dl=1" to the player
+      send "&aSend texture pack to &e%player%"
+    else if arg-1 is set:
+      send resource pack from "https://www.dropbox.com/s/qm9l89jn65dg9qa/Wynncraft1.zip?dl=1" to the arg-1
+      send "&aSend texture pack to &e%arg-1%"

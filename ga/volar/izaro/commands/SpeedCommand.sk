@@ -1,0 +1,8 @@
+command /speed <number>:
+  trigger:
+    if player is flying:
+      set player's fly speed to arg-1/10
+      send "&eSet Fly Speed to &e%arg-1%"
+    else:
+      set player's walk speed to arg-1/10
+      send "&eSet Walk Speed to &e%arg-1%"

@@ -1,2 +1,2 @@
 on enable:
-    broadcast ""
+  send "[Izaro] Plugin Started" to the console

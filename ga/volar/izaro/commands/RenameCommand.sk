@@ -1,0 +1,8 @@
+command /rename <string>:
+  trigger:
+    set {_arg} to "&r%colored arg-1%"
+    set name of player's tool to {_arg}
+    set {_name} to raw name of tool of player
+    set {_uppname} to {_name} in uppercase
+    replace "MINECRAFT:" in {_uppname} with ""
+    send "&aRenamed &e%{_uppname}%&a to: &r%{_arg}%"

@@ -1,0 +1,3 @@
+command /gui:
+  trigger:
+    WaypointsMenu()

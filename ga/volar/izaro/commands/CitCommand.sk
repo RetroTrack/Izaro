@@ -1,4 +1,9 @@
 command /cit <integer>:
-    trigger:
-        {_player} = event-player
-        if
+  trigger:
+    set {_n} to nbt compound of player's tool
+    set int tag "tag;CustomModelData" of {_n} to arg-1
+    set player's tool to nbt item of {_n}
+    set {_name} to raw name of tool of player
+    set {_uppname} to {_name} in uppercase
+    replace "MINECRAFT:" in {_uppname} with ""
+    send "&aSet CustomModelData of &e%{_uppname}%&a to: &6%arg-1%"

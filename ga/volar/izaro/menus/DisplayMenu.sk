@@ -1,0 +1,2 @@
+function displayMenu(menu: string, p: player):
+  open {Guis::%{_menu}%} to {_p}
