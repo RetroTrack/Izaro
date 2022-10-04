@@ -1,0 +1,4 @@
+command /cit <integer>:
+    trigger:
+        {_player} = event-player
+        if
