@@ -1,0 +1,2 @@
+on quit:
+  destroy bossbar "waypoint.%player's uuid%"

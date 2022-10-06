@@ -1,2 +1,4 @@
 on enable:
   send "[Izaro] Plugin Started" to the console
+  set {PluginFolder} to "plugins/Skript/scripts/Izaro/"
+  set {Guis::Waypoints} to a new chest inventory with 6 row with name "&f七七七七七七七七ㇺ"

@@ -1,0 +1,17 @@
+function waypoint(p: player, n: string):
+  load yaml "%{PluginFolder}%/Waypoints/Villages.yml" as "config"
+  load yaml "%{PluginFolder}%/PlayerData/%{_p}'s uuid%.yml" as "playerdata"
+  set {_loc} to yaml value {_n} from "config"
+  set {_dist} to yaml value "Waypoint Activation Distance" from "playerdata"
+  save yaml "config"
+  set {Waypoint::%{_p}'s uuid%} to {_loc}
+  set {WaypointDistance::%{_p}'s uuid%} to distance between {_p} and {Waypoint::%{_p}'s uuid%}
+  set {_p}'s compass target to {Waypoint::%{_p}'s uuid%}
+  create bossbar titled "&5&l%{_n}%:&r&9 %distance between {_p} and {Waypoint::%{_p}'s uuid%}%" and id "waypoint.%{_p}'s uuid%" for {_p} with progress 100 with colors purple
+  while distance between {_p} and {Waypoint::%{_p}'s uuid%} is more than {_dist}:
+    set {_value} to (((distance between {_p} and {Waypoint::%{_p}'s uuid%})/{WaypointDistance::%{_p}'s uuid%}) * 100)
+    set bossbar "waypoint.%{_p}'s uuid%" value to {_value}
+    set bossbar "waypoint.%{_p}'s uuid%" title to "&6&l%{_n}%:&r&9 %round(distance between {_p} and {Waypoint::%{_p}'s uuid%})%"
+    wait 0.15 second
+  destroy bossbar "waypoint.%{_p}'s uuid%"
+  reset {_p}'s compass target

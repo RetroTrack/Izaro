@@ -1,0 +1,13 @@
+command /waypoint [<text>] [<text>]:
+  trigger:
+    if arg-1 is "set":
+      if player is op:
+        set {_loc} to location of targeted block
+        load yaml "%{PluginFolder}%/Waypoints/Villages.yml" as "config"
+        set yaml value arg-2 from "config" to {_loc}
+        save yaml "config"
+        send "&aSet &b%arg-2%&a To &6%{_loc}%"
+      else:
+        send "&cYou don't have the permissions to do that!"
+    if arg-1 is "select":
+      waypoint(player, arg-2)
