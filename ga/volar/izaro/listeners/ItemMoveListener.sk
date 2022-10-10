@@ -1,3 +1,85 @@
 on inventory move:
-  if name of player's inventory is "&f七七七七七七七七ㇺ":
+  #Waypoints 1
+  if name of player's inventory is "&f七七七七七七七七中":
     cancel event
+    checkItem(player, event-item)
+
+  #Waypoints 2
+  if name of player's inventory is "&f七七七七七七七七由":
+    cancel event
+    checkItem(player, event-item)
+
+  #Waypoints 3
+  if name of player's inventory is "&f七七七七七七七七廿":
+    cancel event
+    checkItem(player, event-item)
+
+
+
+
+on inventory click:
+  #Waypoints 1
+  if name of player's inventory is "&f七七七七七七七七中":
+    cancel event
+    checkItem(player, event-item)
+
+  #Waypoints 2
+  if name of player's inventory is "&f七七七七七七七七由":
+    cancel event
+    checkItem(player, event-item)
+
+  #Waypoints 3
+  if name of player's inventory is "&f七七七七七七七七廿":
+    cancel event
+    checkItem(player, event-item)
+
+
+
+on swap hand items:
+  #Waypoints 1
+  if name of player's inventory is "&f七七七七七七七七中":
+    cancel event
+    checkItem(player, event-item)
+
+  #Waypoints 2
+  if name of player's inventory is "&f七七七七七七七七由":
+    cancel event
+    checkItem(player, event-item)
+
+  #Waypoints 3
+  if name of player's inventory is "&f七七七七七七七七廿":
+    cancel event
+    checkItem(player, event-item)
+
+
+
+on drop:
+  #Waypoints 1
+  if name of player's inventory is "&f七七七七七七七七中":
+    cancel event
+    checkItem(player, event-item)
+
+  #Waypoints 2
+  if name of player's inventory is "&f七七七七七七七七由":
+    cancel event
+    checkItem(player, event-item)
+
+  #Waypoints 3
+  if name of player's inventory is "&f七七七七七七七七廿":
+    cancel event
+    checkItem(player, event-item)
+
+function checkItem(p: player, i: item):
+  if lore of {_i} is "&8Waypoints: 3":
+    displayMenu("Waypoints3", {_p})
+    stop
+  if lore of {_i} is "&8Waypoints: 2":
+    displayMenu("Waypoints2", {_p})
+    stop
+  if lore of {_i} is "&8Waypoints: 1":
+    displayMenu("Waypoints1", {_p})
+    stop
+
+  if {WaypointsNames::*} contains (name of {_i}):
+    Waypoint({_p}, (name of {_i}))
+    stop

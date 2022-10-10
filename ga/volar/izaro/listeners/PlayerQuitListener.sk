@@ -1,2 +1,4 @@
 on quit:
   destroy bossbar "waypoint.%player's uuid%"
+  clear {Waypoint::%player's uuid%}
+  reset player's compass target

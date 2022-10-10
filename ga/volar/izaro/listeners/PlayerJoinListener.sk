@@ -1,0 +1,7 @@
+on join:
+  load yaml "%{PluginFolder}%/PlayerData/%player's uuid%.yml" as "playerdata"
+  set {_wpad} to yaml value "Waypoint Activation Distance" from "playerdata"
+  if {_wpad} isn't set:
+    set {_wpad} to 2
+  set yaml value "Waypoint Activation Distance" from "playerdata" to {_wpad}
+  save yaml "playerdata"

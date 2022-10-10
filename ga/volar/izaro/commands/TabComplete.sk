@@ -1,10 +1,9 @@
 options:
   Jobs: "baker" and "warrior" and "lumberjack" and "miner" and "fisherman"
-  Villages: "Bronzeport" and "Dragonsbay" and "Hollowmore" and "Chesterfield" and "Orrinshire" and "Gilramore" and "Swordsmouth" and "Jawordanha" and "Bellenau" and "Swindlincote"
 
 on tab complete of "/waypoint":
   set tab completions for position 1 to "set" and "select"
-  set tab completions for position 2 to {@Villages}
+  set tab completions for position 2 to {WaypointsNames::*}
 on tab complete of "/job":
   set tab completions for position 1 to "menu" and "select" and "reload"
   if tab arg-1 = "reload":

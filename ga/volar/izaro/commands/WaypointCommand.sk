@@ -10,4 +10,4 @@ command /waypoint [<text>] [<text>]:
       else:
         send "&cYou don't have the permissions to do that!"
     if arg-1 is "select":
-      waypoint(player, arg-2)
+      Waypoint(player, arg-2)

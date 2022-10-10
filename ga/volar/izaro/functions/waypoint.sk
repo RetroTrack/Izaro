@@ -1,12 +1,27 @@
-function waypoint(p: player, n: string):
+function Waypoint(p: player, n: string):
+  if {Waypoint::%{_p}'s uuid%} is set:
+    send "&cYou can't activate multiple waypoints at once!" to {_p}
+    stop
+  if {WaypointsNames::*} doesn't contain {_n}:
+    send "&cWaypoint doesn't exist" to {_p}
+    stop
+  #Yaml Stuff
   load yaml "%{PluginFolder}%/Waypoints/Villages.yml" as "config"
   load yaml "%{PluginFolder}%/PlayerData/%{_p}'s uuid%.yml" as "playerdata"
   set {_loc} to yaml value {_n} from "config"
   set {_dist} to yaml value "Waypoint Activation Distance" from "playerdata"
-  save yaml "config"
+  unload yaml "config"
+  unload yaml "playerdata"
+
+  #Set All Variables
   set {Waypoint::%{_p}'s uuid%} to {_loc}
   set {WaypointDistance::%{_p}'s uuid%} to distance between {_p} and {Waypoint::%{_p}'s uuid%}
+
+  #Compass target/MSG
   set {_p}'s compass target to {Waypoint::%{_p}'s uuid%}
+  send "&aNavigating to &e%{_n}%" to {_p}
+
+  #Bossbar
   create bossbar titled "&5&l%{_n}%:&r&9 %distance between {_p} and {Waypoint::%{_p}'s uuid%}%" and id "waypoint.%{_p}'s uuid%" for {_p} with progress 100 with colors purple
   while distance between {_p} and {Waypoint::%{_p}'s uuid%} is more than {_dist}:
     set {_value} to (((distance between {_p} and {Waypoint::%{_p}'s uuid%})/{WaypointDistance::%{_p}'s uuid%}) * 100)
@@ -14,4 +29,7 @@ function waypoint(p: player, n: string):
     set bossbar "waypoint.%{_p}'s uuid%" title to "&6&l%{_n}%:&r&9 %round(distance between {_p} and {Waypoint::%{_p}'s uuid%})%"
     wait 0.15 second
   destroy bossbar "waypoint.%{_p}'s uuid%"
+
+  #Clean up
+  clear {Waypoint::%{_p}'s uuid%}
   reset {_p}'s compass target

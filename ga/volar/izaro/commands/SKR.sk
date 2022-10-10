@@ -1,0 +1,3 @@
+command /skr:
+  trigger:
+    make player execute command "/sk reload scripts"

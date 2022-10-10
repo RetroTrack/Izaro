@@ -2,7 +2,7 @@ on rightclick:
   if player's tool is paper:
     if custom model data of player's tool is 2:
       cancel event
-      displayMenu("Waypoints", player)
+      displayMenu("Waypoints1", player)
 
 on leftclick:
   set {_var} to true #Does nothing
